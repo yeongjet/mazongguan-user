@@ -1,0 +1,17 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "modules": true
+        }
+    },
+    "rules": {
+        "indent": ["error", 4],
+        "semi": ["error", "never"],
+        "quotes": ["error", "single"]
+    },
+    "extends": ["plugin:@typescript-eslint/recommended"]
+}

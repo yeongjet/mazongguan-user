@@ -1,0 +1,13 @@
+{
+  "name": "@mazongguan_user/core",
+  "version": "0.0.1",
+  "license": "ISC",
+  "main": "lib/app.js",
+  "typings": "lib/app.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@mazongguan_pdcode/util": "^0.0.1"
+  }
+}
