@@ -1,9 +1,11 @@
 import { HttpError, HttpStatus, HttpEffect, combineRoutes, EffectFactory, use } from '@marblejs/core';
 import { requestValidator$, t } from '@marblejs/middleware-io';
-import { throwError, of } from 'rxjs';
+import { getRepository } from 'typeorm'
+import { throwError, of, from } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { neverNullable } from '@mazongguan_user/util';
 import { CustomerDao } from '../customer.dao';
+import { ConsumerModel } from '../customer.model'
 
 const validator$ = requestValidator$({
   body: t.type({
@@ -32,13 +34,15 @@ export const createCustomer$ = EffectFactory
     req$.pipe(
       use(validator$),
       mergeMap(req => 
-          of(req.body).pipe(
-            mergeMap(CustomerDao.create),
-            mergeMap(neverNullable),
-            map(customer => ({ body: customer })),
-            catchError((error) => throwError(
-              new HttpError(`Consumer create fail: ${error}`, HttpStatus.INTERNAL_SERVER_ERROR)
-            ))
+        of(req.body).pipe(
+          mergeMap((consumer: ConsumerModel) => from(
+            getRepository(ConsumerModel).save(consumer)
+          )),
+          mergeMap(neverNullable),
+          map(customer => ({ body: customer })),
+          catchError((error) => throwError(
+            new HttpError(`Consumer create fail: ${error}`, HttpStatus.INTERNAL_SERVER_ERROR)
+          ))
         )
       )
     )
