@@ -3,9 +3,8 @@ import { requestValidator$, t } from '@marblejs/middleware-io';
 import { getRepository } from 'typeorm'
 import { throwError, of, from } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
-import { neverNullable } from '@mazongguan_user/util';
-import { CustomerDao } from '../customer.dao';
-import { ConsumerModel } from '../customer.model'
+import { neverNullable } from '@mazongguan_common/util';
+import { ConsumerModel } from '../../model/customer.model'
 
 const validator$ = requestValidator$({
   body: t.type({

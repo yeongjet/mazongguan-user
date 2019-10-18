@@ -1,5 +1,5 @@
 {
-  "name": "mazongguan_pdcode",
+  "name": "mazongguan-user",
   "version": "0.0.1",
   "description": "MaZongGuan user microservice",
   "main": "index.js",
