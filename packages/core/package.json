@@ -8,6 +8,6 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@mazongguan_pdcode/util": "^0.0.1"
+    "@mazongguan-common/util": "^0.0.17"
   }
 }

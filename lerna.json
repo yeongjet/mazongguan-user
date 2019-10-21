@@ -3,7 +3,12 @@
     "packages/*"
   ],
   "version": "0.0.1",
-  "add": {
-    "registry": "http://www.pastme.top:4873"
+  "command": {
+    "add": {
+      "registry": "http://www.pastme.top:4873"
+    },
+    "publish": {
+      "registry": "http://www.pastme.top:4873"
+    }
   }
 }

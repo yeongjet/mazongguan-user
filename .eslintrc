@@ -1,6 +1,6 @@
 {
     "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint"],
+    "plugins": ["@typescript-eslint", "prettier"],
     "parserOptions": {
         "ecmaVersion": 6,
         "sourceType": "module",
@@ -13,5 +13,5 @@
         "semi": ["error", "never"],
         "quotes": ["error", "single"]
     },
-    "extends": ["plugin:@typescript-eslint/recommended"]
+    "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"]
 }
