@@ -5,37 +5,37 @@ import { throwError, of, from } from 'rxjs'
 import { mergeMap, map, catchError } from 'rxjs/operators'
 import { neverNullable } from '@mazongguan-common/filter'
 import { optional } from '@mazongguan-common/validator'
-import { ConsumerModel } from '../../model/customer.model'
+import { EnterpriseAccountModel } from '../../model'
 
 const validator$ = requestValidator$({
     body: t.type({
-        appid: t.number,
-        openid: t.string,
-        unionid: t.string,
-        nickname: t.string,
-        gender: t.number,
-        cellphone: t.string,
-        subscribe: t.number,
-        language: t.string,
-        city_id: t.number,
-        province_id: t.number,
-        country_id: t.number,
-        headimage_url: t.string,
-        remark: t.string,
-        group_id: t.number,
-        tag_id_list: t.array(t.number)
+        enterprise_id: t.number,
+        password: t.string,
+        email: t.string
     })
 })
 
-export const createCustomer$ = EffectFactory.matchPath('/customer')
+export const createEnterpriseAccount$ = EffectFactory.matchPath(
+    '/enterprise/account'
+)
     .matchType('POST')
     .use(req$ =>
         req$.pipe(
             use(validator$),
             mergeMap(req =>
                 of(req.body).pipe(
-                    mergeMap((consumer: ConsumerModel) =>
-                        from(getRepository(ConsumerModel).save(consumer))
+                    mergeMap(enterprise =>
+                        from(
+                            getRepository(EnterpriseAccountModel).save({
+                                ...enterprise,
+                                account_type: 0,
+                                account_status: 1,
+                                cellphone: '12302304320',
+                                password_encrypt_version: 1,
+                                password_modify_status: 1,
+                                remark: '主账号'
+                            })
+                        )
                     ),
                     mergeMap(neverNullable),
                     map(customer => ({ body: customer })),

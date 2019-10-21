@@ -19,11 +19,14 @@ export class ConsumerModel {
 
     @Column('int2', { nullable: false, comment: '性别: 1.未知 2.男 3.女' })
     gender: number
-    
+
     @Column('string', { nullable: false, comment: '手机号' })
     cellphone: string
 
-    @Column('int2', { nullable: false, comment: '是否关注了微信公众号: 1.未关注 2.已关注' })
+    @Column('int2', {
+        nullable: false,
+        comment: '是否关注了微信公众号: 1.未关注 2.已关注'
+    })
     subscribe: number
 
     @Column('string', { nullable: false, comment: '语言' })
@@ -47,10 +50,14 @@ export class ConsumerModel {
     @Column('int4', { nullable: false, comment: '分组id' })
     group_id: number
 
-    @Column('array', { nullable: false, comment: '标签id列表' })
+    @Column('simple-array', { nullable: false, comment: '标签id列表' })
     tag_id_list: number[]
 
-    @Column('int2', { nullable: false, comment: '关注的渠道: 1.ADD_SCENE_SEARCH 公众号搜索 2.ADD_SCENE_ACCOUNT_MIGRATION 公众号迁移 3.ADD_SCENE_PROFILE_CARD 名片分享 4.ADD_SCENE_QR_CODE 扫描二维码 5.ADD_SCENE_PROFILE_ LINK 图文页内名称点击 6.ADD_SCENE_PROFILE_ITEM 图文页右上角菜单 7.ADD_SCENE_PAID 支付后关注 8.ADD_SCENE_OTHERS 其他' })
+    @Column('int2', {
+        nullable: false,
+        comment:
+            '关注的渠道: 1.ADD_SCENE_SEARCH 公众号搜索 2.ADD_SCENE_ACCOUNT_MIGRATION 公众号迁移 3.ADD_SCENE_PROFILE_CARD 名片分享 4.ADD_SCENE_QR_CODE 扫描二维码 5.ADD_SCENE_PROFILE_ LINK 图文页内名称点击 6.ADD_SCENE_PROFILE_ITEM 图文页右上角菜单 7.ADD_SCENE_PAID 支付后关注 8.ADD_SCENE_OTHERS 其他'
+    })
     subscribe_scene: number
 
     @Column('int4', { nullable: false, comment: '二维码扫码场景' })

@@ -8,6 +8,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@mazongguan-common/util": "^0.0.17"
+    "@mazongguan-common/filter": "^0.0.18",
+    "@mazongguan-common/validator": "^0.0.18"
   }
 }
