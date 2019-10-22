@@ -4,7 +4,6 @@ import { getRepository } from 'typeorm'
 import { throwError, of, from } from 'rxjs'
 import { mergeMap, map, catchError } from 'rxjs/operators'
 import { neverNullable } from '@mazongguan-common/filter'
-import { optional } from '@mazongguan-common/validator'
 import { EnterpriseAccountModel } from '../../model'
 
 const validator$ = requestValidator$({
@@ -38,7 +37,14 @@ export const createEnterpriseAccount$ = EffectFactory.matchPath(
                         )
                     ),
                     mergeMap(neverNullable),
-                    map(customer => ({ body: customer })),
+                    map(customer => ({
+                        body: {
+                            code: 10000,
+                            data: {
+                                customer: customer
+                            }
+                        }
+                    })),
                     catchError(error =>
                         throwError(
                             new HttpError(

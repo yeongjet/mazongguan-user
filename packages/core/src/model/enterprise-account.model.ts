@@ -11,7 +11,7 @@ export class EnterpriseAccountModel {
     @Column('int2', { nullable: false, comment: '账号状态' })
     account_status: number
 
-    @Index({ unique: true })
+    @Index()
     @Column('int4', { nullable: false, comment: '所属企业id' })
     enterprise_id: number
 

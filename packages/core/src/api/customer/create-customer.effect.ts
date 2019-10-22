@@ -4,7 +4,6 @@ import { getRepository } from 'typeorm'
 import { throwError, of, from } from 'rxjs'
 import { mergeMap, map, catchError } from 'rxjs/operators'
 import { neverNullable } from '@mazongguan-common/filter'
-import { optional } from '@mazongguan-common/validator'
 import { ConsumerModel } from '../../model/customer.model'
 
 const validator$ = requestValidator$({
