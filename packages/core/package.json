@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "@mazongguan-common/filter": "^0.0.18",
-    "@mazongguan-common/validator": "^0.0.18"
+    "@yeongjet/middleware-joi": "0.0.1"
   }
 }
